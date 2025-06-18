@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hackathon Application</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #090c0b;
+      background-image: 
+      linear-gradient(to right, #495e5c 1px, transparent 1px),
+      linear-gradient(to bottom, #495e5c 1px, transparent 1px),
+      linear-gradient(45deg, #495e5c 1px, transparent 1px),
+      linear-gradient(-45deg, #495e5c 1px, transparent 1px);
+      background-size: 30px 30px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+
+
+
+
+
+    /* Top wave */
+    .wave-strip {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(to right, #212e29, #80b2a0);
+      border-bottom-left-radius: 50% 20%;
+      border-bottom-right-radius: 50% 20%;
+      position: relative;
+    }
+
+    /* Decorative SVG shapes */
+    .svg-shape {
+      position: absolute;
+      z-index: 0;
+    }
+
+    .svg-shape.top-right {
+      top: 20px;
+      right: -60px;
+    }
+
+    .svg-shape.bottom-left {
+      bottom: -80px;
+      left: -40px;
+    }
+
+    .form-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: -100px;
+      padding: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .form-container {
+      background: #ffffff;
+      width: 100%;
+      max-width: 620px;
+      border-radius: 18px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      border-left: 6px solid #7ea8a2;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    h2 {
+      text-align: center;
+      color: #444;
+      font-size: 26px;
+      margin-right: 180px;
+    }
+
+    .form-header {
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to right, #ffffff, #7ea8a2, #7ea8a2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    form {
+      padding: 40px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-top: 28px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 16px 12px 12px 12px;
+      border: 2px solid #b3d0c4;
+      border-radius: 10px;
+      outline: none;
+      font-size: 16px;
+      background: transparent;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .input-field:focus {
+      border-color: #7ea8a2;
+      background-color: #eff9f5;
+    }
+
+    label {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-size: 16px;
+      color: #777;
+      background: #fff;
+      padding: 0 6px;
+      transition: all 0.25s ease;
+      pointer-events: none;
+    }
+
+    .input-field:focus + label,
+    .input-field:not(:placeholder-shown) + label {
+      top: -10px;
+      left: 12px;
+      font-size: 13px;
+      color: #80b2a0;
+    }
+
+    .input-field:focus,
+    .input-field:not(:placeholder-shown) {
+      padding-top: 20px;
+    }
+
+    textarea.input-field {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    small {
+      font-size: 13px;
+      color: #88a9a1;
+      padding-left: 5px;
+      display: block;
+      margin-top: 5px;
+    }
+
+    button {
+      margin-top: 35px;
+      width: 100%;
+      background: #80b2a0;
+      color: white;
+      padding: 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background: #68a191;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 0;
+      }
+
+      form {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Curve Strip -->
+  <div class="wave-strip"></div>
+
+  <!-- Decorative SVGs -->
+  <svg class="svg-shape top-right" width="160" height="160" viewBox="0 0 200 200" fill="none">
+    <path fill="#68a191" d="M47.6,-64.5C62.6,-55.6,75.6,-42.7,79.6,-27.4C83.6,-12.2,78.7,5.5,71.8,21.8C64.9,38.1,56,53,43.4,63.5C30.7,74,15.4,80.1,1.5,78C-12.3,75.8,-24.5,65.4,-37.3,56.2C-50.1,47,-63.5,39.1,-66.4,27.5C-69.3,15.9,-61.6,0.5,-56.1,-14.4C-50.6,-29.3,-47.2,-43.6,-38.5,-54.4C-29.9,-65.2,-15,-72.6,0.6,-73.4C16.2,-74.2,32.4,-68.4,47.6,-64.5Z" transform="translate(100 100)" />
+  </svg>
+
+
+  <!-- Form Wrapper -->
+  <div class="form-wrapper">
+    <div class="form-container">
+      <div class="form-header">
+        <h2>Hackathon Team Application</h2>
+      </div>
+
+      <form id="registrationForm" method="POST">
+        <div class="input-group">
+          <input type="text" name="Full Name" class="input-field" required placeholder=" " />
+          <label>Full Name</label>
+        </div>
+
+        <div class="input-group">
+          <input type="email" name="Email" class="input-field" required placeholder=" " />
+          <label>Email Address</label>
+        </div>
+
+        <div class="input-group">
+          <input type="tel" name="Phone Number" class="input-field" required placeholder=" " />
+          <label>Mobile Number</label>
+        </div>
+
+        <div class="input-group">
+          <input type="text" name="Current Program" class="input-field" required placeholder=" " />
+          <label>Your current class or program</label>
+          <small>e.g., "B.Tech CSE - 2nd Year"</small>
+        </div>
+
+        <div class="input-group">
+          <input type="text" name="Skills" class="input-field" required placeholder=" " />
+          <label>Your Skillset</label>
+          <small>Python, UI/UX, Editing, Team Management, etc.</small>
+        </div>
+
+        <div class="input-group">
+          <textarea name="Why Join?" class="input-field" required placeholder=" "></textarea>
+          <label>Why do you want to join?</label>
+          <small>Your motivation, goal, or excitement for this opportunity</small>
+        </div>
+
+        <button type="submit">Submit Application</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+document.getElementById('registrationForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const data = {
+    "Full Name": form['Full Name'].value,
+    "Email": form['Email'].value,
+    "Phone Number": form['Phone Number'].value,
+    "Current Program": form['Current Program'].value,
+    "Skills": form['Skills'].value,
+    "Why Join?": form['Why Join?'].value
+  };
+
+  fetch('https://script.google.com/macros/s/AKfycbx1GsXmiwch5uKXUWoH2L1A-jhzAgMKkbKuLJ0S0ARmnduXJ-smPM_SQ417ZwcDA-Jp/exec', {
+    method: 'POST',
+    body: JSON.stringify(data)
+  })
+  .then(res => res.text())
+  .then(response => {
+    alert("✅ Application submitted successfully!");
+    form.reset();
+  })
+  .catch(error => {
+    alert("❌ Submission failed. Please try again.");
+    console.error("Error!", error.message);
+  });
+});
+</script>
+
+
+</body>
+</html>
