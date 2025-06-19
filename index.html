@@ -248,35 +248,36 @@
   </div>
 
   <script>
-document.getElementById('registrationForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+  document.getElementById('registrationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-  const form = e.target;
-  const data = {
-    "Full Name": form['Full Name'].value,
-    "Email": form['Email'].value,
-    "Phone Number": form['Phone Number'].value,
-    "Current Program": form['Current Program'].value,
-    "Skills": form['Skills'].value,
-    "Why Join?": form['Why Join?'].value
-    "Project Idea": form['Project Idea'].value
-  };
+    const form = e.target;
+    const data = {
+      "Full Name": form['Full Name'].value,
+      "Email": form['Email'].value,
+      "Phone Number": form['Phone Number'].value,
+      "Current Program": form['Current Program'].value,
+      "Skills": form['Skills'].value,
+      "Why Join?": form['Why Join?'].value,
+      "Project Idea": form['Project Idea'].value
+    };
 
-  fetch('https://script.google.com/macros/s/AKfycbx1GsXmiwch5uKXUWoH2L1A-jhzAgMKkbKuLJ0S0ARmnduXJ-smPM_SQ417ZwcDA-Jp/exec', {
-    method: 'POST',
-    body: JSON.stringify(data)
-  })
-  .then(res => res.text())
-  .then(response => {
-    alert("✅ Application submitted successfully!");
-    form.reset();
-  })
-  .catch(error => {
-    alert("❌ Submission failed. Please try again.");
-    console.error("Error!", error.message);
+    fetch('https://script.google.com/macros/s/AKfycbx1GsXmiwch5uKXUWoH2L1A-jhzAgMKkbKuLJ0S0ARmnduXJ-smPM_SQ417ZwcDA-Jp/exec', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    })
+    .then(res => res.text())
+    .then(response => {
+      alert("✅ Application submitted successfully!");
+      form.reset();
+    })
+    .catch(error => {
+      alert("❌ Submission failed. Please try again.");
+      console.error("Error!", error.message);
+    });
   });
-});
 </script>
+
 
 
 </body>
